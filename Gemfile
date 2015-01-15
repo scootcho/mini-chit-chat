@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.1.5'
+gem 'figaro'
 
 group :development do
   gem 'sqlite3'
