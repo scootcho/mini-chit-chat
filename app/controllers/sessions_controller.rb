@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController::Base
+class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(request.env['omniauth.auth'])
     cookies[:user_id]
