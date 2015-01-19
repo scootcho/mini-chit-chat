@@ -6,20 +6,19 @@ class CommentsController < ApplicationController
 
   def create
     if current_user
-      @comment = current_user.comments.(comment_params)
+      @comment = current_user.comments.build(comment_params)
       if @comment.save
-        flash[:success] = "your comment was successfully posted!"
+        flash[:success] = 'Your comment was successfully posted!'
       else
-        flash[:failure] = "your comment cannot be saved."
+        flash[:error] = 'Your comment cannot be saved.'
       end
     end
-    redirect_to root_url    
+    redirect_to root_url
   end
-
+   
   private
-
+   
   def comment_params
     params.require(:comment).permit(:body)
   end
-
 end
