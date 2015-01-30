@@ -1,4 +1,5 @@
 require File.expand_path('../boot', __FILE__)
+require File.expand_path('../csrf_protection', __FILE__)
 
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -27,6 +28,6 @@ module MiniChat
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
   config.middleware.delete Rack::Lock
-  config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
+  config.middleware.use FayeRails::Middleware, extensions: [CsrfProtection.new], mount: '/faye', :timeout => 25
   end
 end
